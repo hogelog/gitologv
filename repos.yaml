@@ -1,5 +1,5 @@
 repositories:
   gitologv: https://github.com/hogelog/gitologv.git
-command: "git log --oneline --decorate --graph --color --all | aha"
+command: "git log --oneline --decorate --graph --color --all --max-count=200 | aha"
 localdir: local
 htmldir: html

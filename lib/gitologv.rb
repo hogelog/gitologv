@@ -34,7 +34,7 @@ class GitoLogv
       STDERR.puts "Create local repository #{name}:#{url}"
       Grit::Repo.init_bare(@localpath)
     end
-    @grit = Grit::Repo.new(@localpath, :is_bare => true)
+    @grit = Grit::Repo.new(@localpath, :is_bare => true, :timeout => false)
     @grit.remote_add(name, url)
   end
   def fetch
