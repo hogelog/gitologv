@@ -34,13 +34,12 @@ class GitoLogv:
     self.name = name
     self.url = url
     self.path = conf.repos_path(name)
-    self.git = Git()
     if not os.path.exists(self.path):
       print >> sys.stderr, "Create local repository %s:%s" % (name, url)
-      self.git.clone(("--mirror %s %s" % (url, self.path)).split())
+      Git().clone(("--mirror %s %s" % (url, self.path)).split())
 
   def fetch(self):
-    self.git.fetch()
+    Git(self.path).fetch()
 
   def shell(self, args):
     return Popen(args, stdout=PIPE).communicate()[0]
