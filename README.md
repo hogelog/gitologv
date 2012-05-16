@@ -1,18 +1,15 @@
 # gitologv
 
 ## Require Command
-- aha
-- git
+- python
 
-## Require Gem
-- grit
+## Require Python Package
+- GitPython
+- ansi2html
 
 ## Setup
-    $ cd
-    $ git clone git://github.com/hogelog/gitologv.git .gitologv
-    $ cd .gitologv
-
-    setup gem...
-
+    $ git clone git://github.com/hogelog/gitologv.git
+    $ cd gitologv
+    $ pip install GitPython ansi2html
     $ vim repos.yaml # configure
-    $ ./gitologv/gitologv # generate git log html
+    $ ./gitologv

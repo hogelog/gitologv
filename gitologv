@@ -1,5 +1,5 @@
 #!/bin/sh
 
 dir=`dirname $0`
-script=lib/gitologv.rb
-cd $dir && ruby lib/gitologv.rb
+script=lib/gitologv.py
+cd $dir && python $script
