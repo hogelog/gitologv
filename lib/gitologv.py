@@ -47,15 +47,16 @@ class GitoLogv:
   def log(self):
     return self.shell(["sh", "-c", "cd %s && %s" % (self.path, self.conf.command())])
 
-config = GitoLogvConfig("repos.yaml")
-for repos in config.repositories():
-  url = config.repository(repos)
-  logv = GitoLogv(config, repos, url)
-  print >> sys.stderr, "Fetching %s" % url
-  logv.fetch()
-  log = logv.log()
-  html = Ansi2HTMLConverter(linkify=True).convert(log)
-  html_path = "%s.html" % config.html_path(repos)
-  with open(html_path, "w") as html_file:
-    print >> sys.stderr, "Generating %s" % html_path
-    print >> html_file, html
+if __name__ == "__main__":
+  config = GitoLogvConfig("repos.yaml")
+  for repos in config.repositories():
+    url = config.repository(repos)
+    logv = GitoLogv(config, repos, url)
+    print >> sys.stderr, "Fetching %s" % url
+    logv.fetch()
+    log = logv.log()
+    html = Ansi2HTMLConverter(linkify=True).convert(log)
+    html_path = "%s.html" % config.html_path(repos)
+    with open(html_path, "w") as html_file:
+      print >> sys.stderr, "Generating %s" % html_path
+      print >> html_file, html
